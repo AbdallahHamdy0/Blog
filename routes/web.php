@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +21,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin', function(){
+    return view('admin.index');
+})->name('admin');
+
+Route::group(['middleware'=>'admin'],function(){
+    Route::get('/admin', function(){
+        return view('admin.index');
+    })->name('admin');
+Route::resource('admin/user','AdminUserController');
+});
+
