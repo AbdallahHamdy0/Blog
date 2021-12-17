@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @yield('style')
 <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -34,11 +39,23 @@
         </a>
   
         <ul class="nav nav-pills">
-          <li class="nav-item "><a href="#" class="nav-link active text-light" aria-current="page">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-light">Features</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-light">Pricing</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-light">FAQs</a></li>
-          <li class="nav-item"><a href="#" class="nav-link text-light">About</a></li>
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::user()->name }}
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </div>
+            </li>
         </ul>
       </header>
 
@@ -67,8 +84,8 @@
                   </button>
                   <div class="collapse" id="dashboard-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark rounded">All Posts</a></li>
-                      <li><a href="#" class="link-dark rounded">Create Post</a></li>
+                      <li><a href="{{route('post.index')}}" class="link-dark rounded">All Posts</a></li>
+                      <li><a href="{{route('post.create')}}" class="link-dark rounded">Create Post</a></li>
                     </ul>
                   </div>
                 </li>
