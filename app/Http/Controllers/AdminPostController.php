@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Photo;
 
+use App\Category;
+
 class AdminPostController extends Controller
 {
     /**
@@ -25,8 +27,9 @@ class AdminPostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.posts.create');
+    {   
+        $cats=Category::all();
+        return view('admin.posts.create',compact('cats'));
     }
 
     /**
@@ -74,7 +77,8 @@ class AdminPostController extends Controller
     public function edit($id)
     {
         $post=Post::findOrFail($id);
-        return view('admin.posts.edit',compact('post'));
+        $cats=Category::all();
+        return view('admin.posts.edit',compact('post','cats'));
     }
 
     /**
@@ -111,9 +115,9 @@ class AdminPostController extends Controller
     public function destroy($id)
     {   
         $post=Post::findOrFail($id);
-        
-        session()->flash('message',' Post Has Been Deleted : '.$post->title);
 
+        session()->flash('message',' Post Has Been Deleted : '.$post->title);
+        unlink(public_path().$post->photo->file);
         $post->delete();
 
         return redirect('/admin/post');

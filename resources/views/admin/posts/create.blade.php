@@ -29,12 +29,12 @@
       <div class="mb-3 row">
         <div class="col">
             <label for="exampleFormControlSelect1">Category</label>
-            <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="category_id">
-                <option value="0" >Newtwork</option>
-                <option value="1" >Market</option>
-                <option value="2" >Clothes</option>
-
-            </select>
+                <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="category_id">
+                  @foreach ($cats as $cat)
+                  <option value="{{$cat->id}}" >{{$cat->name}}</option>
+                  
+                  @endforeach
+                </select>  
         </div>
                 {{-- <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="role_id">
                   @foreach ($roles as $role)

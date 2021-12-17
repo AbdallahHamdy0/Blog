@@ -95,7 +95,7 @@
                   </button>
                   <div class="collapse" id="orders-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark rounded">All  Category</a></li>
+                      <li><a href="{{route('category.index')}}" class="link-dark rounded">All  Category</a></li>
         
                     </ul>
                   </div>

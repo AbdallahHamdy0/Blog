@@ -34,9 +34,15 @@
             <div class="col">
                 <label for="exampleFormControlSelect1">Category</label>
                     <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="category_id">
-                        <option value="0" >Newtwork</option>
-                        <option value="1" >Market</option>
-                        <option value="2" >Clothes</option>
+                    @if ($post->category)
+                    <option value="{{$post->category->id}}"  slected>{{$post->category->name}}</option>
+
+                    @endif
+                    @foreach ($cats as $cat)
+                    @if ($post->category->name != $cat->name)
+                    <option value="{{$cat->id}}" >{{$cat->name}}</option>
+                    @endif
+                    @endforeach
                 </select>
                 </div>   
         </div>

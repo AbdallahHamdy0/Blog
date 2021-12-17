@@ -22,12 +22,12 @@
         <div class="media g-mb-30 media-comment">
             
             <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15 bg-light"  src="{{$post->user->photo ? $post->user->photo->file :"No Pic"}}" alt="Image Description">
-            <span class=" g-color-gray-dark-v1 mb-0">{{$post->user->name}} </span>
+            <span class=" g-color-gray-dark-v1 mb-0 pt-3"><a href=""> {{$post->user->name}} </a></span>
         </div>
             <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
               <div class="g-mb-15">
                 <h5 class="h5 g-color-gray-dark-v1 mb-0"><a href="{{route('post.edit',$post->id)}} ">{{$post->title}}</a>  </h5>
-                  <span class="g-color-gray-dark-v4 g-font-size-12 ml-2 mb-0">{{$post->created_at->diffForHumans()}} </span> <span><a href=""><small><u> Category</u> </small></a></span>
+                  <span class="g-color-gray-dark-v4 g-font-size-12 ml-2 mb-0">{{$post->created_at->diffForHumans()}} </span> <span><a href=""><small><u>{{$post->category->name}}</u> </small></a></span>
 
                     <hr >
                 
