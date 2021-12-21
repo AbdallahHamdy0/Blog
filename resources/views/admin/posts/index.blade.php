@@ -13,6 +13,8 @@
     <div class="alert alert-success">{{session('message')}}</div>
   @endif
 </div>
+@if ($posts)
+    
 
 @foreach ($posts as $post)
     
@@ -39,17 +41,11 @@
 
               <ul class="mt-4 list-inline d-sm-flex my-0">
                 <li class="list-inline-item g-mr-20">
-                  <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                    <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
-                    178
+                  <a class="" href="{{route('home.post',$post->slug)}}">
+                    View Post
                   </a>
                 </li>
-                <li class="list-inline-item g-mr-20">
-                  <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
-                    <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
-                    34
-                  </a>
-                </li>
+                
                 <li class="list-inline-item ml-auto">
                   <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
                     <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
@@ -62,4 +58,15 @@
     </div>
     
     @endforeach
+
+        <div class="row mt-4">
+          <div class="col-sm-6">
+            <div class="col offset-6">
+              {{$posts->render()}}
+            </div>
+          </div>
+        </div>
+    @endif
+
+
     @endsection

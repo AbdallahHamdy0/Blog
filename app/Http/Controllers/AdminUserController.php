@@ -51,7 +51,6 @@ class AdminUserController extends Controller
             $photo=Photo::create((['file'=>$name]));
             $inputs['photo_id']=$photo->id;
         }
-        // $inputs['password']=bcrypt($request->password);
         $user=User::create($inputs);
         session()->flash('message','The User Has Been Created : '.$user->name);
 
@@ -102,7 +101,6 @@ class AdminUserController extends Controller
             $photo=Photo::create((['file'=>$name]));
             $inputs['photo_id']=$photo->id;
         }
-        // $inputs['password']=bcrypt($request->password);
 
         $user->update($inputs);
        

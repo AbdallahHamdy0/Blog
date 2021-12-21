@@ -86,6 +86,8 @@
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                       <li><a href="{{route('post.index')}}" class="link-dark rounded">All Posts</a></li>
                       <li><a href="{{route('post.create')}}" class="link-dark rounded">Create Post</a></li>
+                      <li><a href="{{route('comments.index')}}" class="link-dark rounded">All Comments</a></li>
+
                     </ul>
                   </div>
                 </li>
@@ -97,6 +99,17 @@
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                       <li><a href="{{route('category.index')}}" class="link-dark rounded">All  Category</a></li>
         
+                    </ul>
+                  </div>
+                </li>
+                <li class="mb-1">
+                  <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                    Media
+                  </button>
+                  <div class="collapse" id="orders-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                      <li><a href="{{route('media.index')}}" class="link-dark rounded">All  Media</a></li>
+                      <li><a href="{{route('media.create')}}" class="link-dark rounded">Upload  Media</a></li>
                     </ul>
                   </div>
                 </li>
@@ -142,5 +155,7 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
       <script src="{{asset('js/script.js')}}"></script>
+      @yield('script')
+
 </body>
 </html>

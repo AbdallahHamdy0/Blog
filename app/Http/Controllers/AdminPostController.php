@@ -17,7 +17,7 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        $posts=Post::all();
+        $posts=Post::paginate(2);
         return view('admin.posts.index',['posts'=>$posts]);
     }
 
@@ -40,6 +40,8 @@ class AdminPostController extends Controller
      */
     public function store(Request $request)
     {   
+
+        
           $inputs=$request->all();
         if($file = $request->file('photo_id')){
 
@@ -47,13 +49,11 @@ class AdminPostController extends Controller
             $file->move('images',$name);
             $photo=Photo::create((['file'=>$name]));
             $inputs['photo_id']=$photo->id;
+            
         }
 
-        $ost=Post::create($inputs);
+        $post=Post::create($inputs);
         session()->flash('message','New Post Has Been Created : ');
-
-
-
          return redirect('/admin/post');
     }
 
@@ -121,5 +121,12 @@ class AdminPostController extends Controller
         $post->delete();
 
         return redirect('/admin/post');
+    }
+
+    public function post($slug)
+    {
+        $post=Post::whereSlug($slug)->first();
+        $comments=$post->comments()->whereIsActive(1)->get();
+       return view('post',compact('post','comments'));
     }
 }

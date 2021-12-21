@@ -14,17 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/admin', function(){
-    return view('admin.index');
-})->name('admin');
+Route::get('post/{id}','AdminPostController@post')->name('home.post');
 
 Route::group(['middleware'=>'admin'],function(){
 
@@ -37,6 +32,18 @@ Route::group(['middleware'=>'admin'],function(){
     Route::resource('admin/post','AdminPostController');
 
     Route::resource('admin/category','CategoryController');
+
+    Route::resource('admin/media','AdminMediaController');
+
+    Route::delete('/delete/media','AdminMediaController@deletemedia');
+
+    
+
+    // Route::get('admin/media/upload',['as'=>'admin.media.upload','uses'=>'AdminMediaController@store']);
+
+    Route::resource('admin/comments','PostCommentsController');
+
+    Route::resource('admin/comment/replies','CommentRepliesController');
 
 
 });

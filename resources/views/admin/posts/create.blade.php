@@ -1,8 +1,11 @@
 @extends('admin.index')
+
+
+
+
 @section('Contnet')
 <div class="row">
-    <div class="col-sm-1"> </div>
-    <div class="card rounded col-sm-7 ">
+    <div class="card rounded col-sm-11 ">
       <div class="card-body">
         <div class="card-title"><h3>Create Post  </h3>  </div>
           <div class="card-body">
@@ -17,8 +20,8 @@
         <input name="title" type="name" class="form-control" id="exampleInputname" >
       </div>
         <div class="mb-3">
-        <label for="exampleInputBody" class="form-label">Body</label>
-            <textarea name="body" id="exampleInputBody" class="form-control" cols="20" rows="5"></textarea>
+        <label for="mytextarea" class="form-label">Body</label>
+            <textarea name="body" id="mytextarea" class="form-control" cols="20" rows="5"></textarea>
       </div>
 
       <div class="input-group mb-3">
@@ -50,7 +53,7 @@
 
   </div>
 </div>
-<div class="col-sm-3"></div>
+<div class="col-sm-1"></div>
 
   </div>
 @include('errors.errorpage')

@@ -17,12 +17,12 @@
         <div class="mb-3">
                 
             <label for="exampleInputname" class="form-label">Title </label>
-            <input name="title" type="text" class="form-control" id="exampleInputname"  value="{{ $post->title }}">
+            <input name="title" type="text" class="form-control" id="exampleInputname"  value="{!! old( 'tilte',$post->title) !!}">
         </div>
 
         <div class="mb-3">
             <label for="exampleInputBody" class="form-label">Body</label>
-            <textarea name="body" id="" cols="75" rows="10">{{ $post->body }}</textarea>
+            <textarea name="body" id="" cols="75" rows="10">{!! old( 'body',$post->body) !!}</textarea>
         </div>
 
         <div class="input-group mb-3">
